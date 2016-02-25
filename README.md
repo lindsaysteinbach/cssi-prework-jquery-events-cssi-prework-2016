@@ -14,9 +14,7 @@ The code written to trigger the action is called an **event listener** or **even
 ## Event Handler Syntax
 In JavaScript, events are user actions such as mouse clicks, key presses, or window resizing. We can define code that will be run when those events happen.
 
-After an event happens, we can  bind - or connect - a function to be called by the browser whenever that event happens. 
-
-The browser listens for and event, and then handles it, or responds, using an event handler. 
+With event handlers, the browser listens for an event on a certain element or set of elements. After that event is triggered, the broswer "handles it" or responds by executing a function. 
 
 In the example below, lets pretend we wanted to do something everytime the user clicked on a header.
 
@@ -24,12 +22,12 @@ In the example below, lets pretend we wanted to do something everytime the user 
 $("h1").click(action);
 ```
 
-* `$("h1")` - the *listener* - uses the selector syntax `$()` to get all the `<h1>` elements
+* `$("h1")` - the *listener* - which element to pay attention to. note this uses the selector syntax `$()` 
 * `click` - the *event* we are responding to
-* `action` - the *handler* - or what we want our response to be
+* `action` - the *handler* - what the response should be
 
 
-More generically, let's set up an event handler to pay attention or listen to an `h1` tag by using .on():
+More generically, .on() can be used to bind a listener to a event.
 
 ```js
 $('h1').on("eventname" function(){
@@ -37,16 +35,19 @@ $('h1').on("eventname" function(){
 });
 ```
 
-In this case, "eventname" - could be "click" as before, or it could be any of the events listed in the jQuery Documentation (linked in the Resources section below). With the `on` function, we can include more than one eventname.
+Here, "eventname" - could be "click" as before, or it could be any of the events listed in the jQuery Documentation (linked in the Resources section below). 
 
+With the `on` function, we can include more than one event to respond to.
 ```js
 $('p').on("dblclick keypress", function(){})`.
 ```
 
-Broadly `.click(action)`is just a shortcut for `.on("click", action)`. Now that we understand the syntax, let's look at the two main components of event handlers. The event (what the user does) and the handler (how the browser responds).
+Broadly `.click(action)`is just a shortcut for `.on("click", action)`. 
+
+Now that we understand the syntax, let's look at the two main components of event handlers. The event (what the user does) and the handler (how the browser responds).
 
 ##Events - What The Browser Listens For
-Facbook pages don't just randomly play videos or arbitrarily show pop-up windows with how many people have liked your posts. These pages wait for a certain event from the user to trigger and response. In this section, we'll expose some common events. 
+Facebook pages don't just randomly play videos or arbitrarily show pop-up windows listing the people who have liked your posts. These pages wait for a certain event from the user to trigger a response. In this section, we'll expose some of those common events that a browser might be waiting for. 
 
 ### Responding to the User's Mouse
 Mouse events include click, dblClick, mousemove, mouseover, and mouseout. The code below will show an alert when the user's mouse enters into the element with the id mousetrap and another alert when the mouse leaves.
@@ -71,20 +72,18 @@ $(document).on('keypress', function(key) {
 });
 ```
 
-Notice that the jQuery selector is `document`. This means that any time a key is pressed, the alert will appear. If you want to check if the cursor is in a particular area (like an input field) then you would just need to change the selector.
+Notice that the jQuery selector is `document`. This means that any time a key is pressed, the codeblock will be executed. The alert will only appear when the key code is 13, the Enter key.
 
 
-### Submit
+### Responding to a Form Submission 
 
-The `submit` event submits a form. Let's set up our submit event so that only submits the form if a certain value has been entered in the text field:
+The `submit` event is triggered when a form is submitted. For this reason, use the HTML `form` as our selector to bind the event on. 
 
 ```js
 $("form").on("submit", function() {
     alert('Thanks for completing yet another survey!');
 });
 ```
-
-In the example above, we are using the `submit` event. We use the HTML `form` as our selector to bind the event on. 
 
 ###Document Ready 
 We often only want to run our JavaScript when the page has finished loading. Just like we can bind functions to events triggered by the user, we can run certain functions when the document is ready.
@@ -95,6 +94,31 @@ $( document ).ready(function() {
   // will be run when the document is ready.
 });
 ```
+If you are loading external JavaScript files in header or writing `<script>` tags in the header, you must wrap the document ready function around it. 
+
+```js
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#test").hide();
+    });
+});
+```
+
+The only way you can load JavaScript without document ready, is if you load it right  before the closing `</body>` tag.
+
+```html
+<body>
+<p>I have bad habits</p>
+<script>
+   $("p").click(function(){
+         alert("But I don't have to use document.ready");
+    });
+</script>
+</body>
+```
+
+Separation of concerns dictates that your JavaScript be in it's own file and linked in the header, so make sure you wrap it up!
+
 
 
 ##Event Handlers - How the Browser Responds
