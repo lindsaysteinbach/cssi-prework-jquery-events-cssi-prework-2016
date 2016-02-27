@@ -6,8 +6,8 @@
 
 ## Intro
 
-When you're procrastinating of Facebook, almost every action you take, leads the page to respond in someway.
-For example, as soon as your cursor moves into the new post text box, the cursor changes from an arrow to an I. As soon as you click into the new post text box, a variety of new buttons appear -to attatch a picture of your lunch or a link to a politically charged article you only read halfway.  Recenlty, even just hovering over a video in your newsfeed will cause it to play automatically. These actions can happen because Javascript code is "listening" to an event taken by a user, and responding with an action.
+When you're procrastinating on Facebook, almost every action you take leads the page to respond in some way.
+For example, as soon as your cursor moves in to the 'new post' text box, the cursor changes from an arrow to an 'I'. As soon as you click into the new post text box, a variety of new buttons appear - allowing you to attatch a picture of your lunch or a link to a politically charged article you only read halfway.  Recenlty, even just hovering over a video in your newsfeed will cause it to play automatically. These actions can happen because Javascript code is "listening" to an event taken by a user, and responding with an action.
 
 The code written to trigger the action is called an **event listener** or **event handler**
 
@@ -85,7 +85,7 @@ $("form").on("submit", function() {
 });
 ```
 
-###Document Ready 
+###`$(document).ready`
 We often only want to run our JavaScript when the page has finished loading. Just like we can bind functions to events triggered by the user, we can run certain functions when the document is ready.
 
 ```js
@@ -94,7 +94,7 @@ $( document ).ready(function() {
   // will be run when the document is ready.
 });
 ```
-If you are loading external JavaScript files in header or writing `<script>` tags in the header, you must wrap the document ready function around it. 
+If you are loading external JavaScript files in header or writing `<script>` tags in the header, you must wrap the `$(document).ready` function around it. 
 
 ```js
 $(document).ready(function(){
@@ -104,7 +104,7 @@ $(document).ready(function(){
 });
 ```
 
-The only way you can load JavaScript without document ready, is if you load it right  before the closing `</body>` tag.
+The only way you can load JavaScript without `$(document).ready`, is if you load it right  before the closing `</body>` tag.
 
 ```html
 <body>
@@ -120,9 +120,8 @@ The only way you can load JavaScript without document ready, is if you load it r
 Separation of concerns dictates that your JavaScript be in it's own file and linked in the header, so make sure you wrap it up!
 
 
-
 ##Event Handlers - How the Browser Responds
-Once we have declared what events the browswer should be listening for and tied them to certain elements in the DOM, we need to write functions for how the broswer should response. In most of the examples above, we have included an anonymous function called a callback function, but it is much better practice to use a named function.
+Once we have declared what events the browswer should be listening for and tied them to certain elements in the DOM, we need to write functions for how the broswer should respond. In most of the examples above, we have included an anonymous function called a callback function, but it is much better practice to use a named function.
 
 #### Callback Functions 
 
@@ -149,7 +148,7 @@ $("h1").click(tellUsWeClicked);
 This style of coding improves readability and allows functions to be reused in other handlers. 
 
 ## The $(this) Selector
-With event handlers, there is a special selector, $(this), which accesses the element that fired the event. 
+With event handlers, there is a special selector, $(this), which accesses *the element that fired the event*. 
 
 ```js
 $("img").click(function(){
