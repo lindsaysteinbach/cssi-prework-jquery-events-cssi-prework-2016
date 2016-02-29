@@ -1,8 +1,12 @@
 # jQuery Event Listeners
 
 ## Objectives
-+ Explain what an event listener is and how it's used
-+ Implement an event listener
+* Event Listener Syntax
+* Events
+* Event Handlers
+* Using 'this' as a Selector
+* Chaining Methods in Event Listeners
+
 
 ## Intro
 
@@ -11,7 +15,7 @@ For example, as soon as your cursor moves in to the 'new post' text box, the cur
 
 The code written to trigger the action is called an **event listener** or **event handler**
 
-## Event Handler Syntax
+## Event Listener Syntax
 In JavaScript, events are user actions such as mouse clicks, key presses, or window resizing. We can define code that will be run when those events happen.
 
 With event handlers, the browser listens for an event on a certain element or set of elements. After that event is triggered, the broswer "handles it" or responds by executing a function. 
@@ -74,7 +78,6 @@ $(document).on('keypress', function(key) {
 
 Notice that the jQuery selector is `document`. This means that any time a key is pressed, the codeblock will be executed. The alert will only appear when the key code is 13, the Enter key.
 
-
 ### Responding to a Form Submission 
 
 The `submit` event is triggered when a form is submitted. For this reason, use the HTML `form` as our selector to bind the event on. 
@@ -123,7 +126,7 @@ Separation of concerns dictates that your JavaScript be in it's own file and lin
 ##Event Handlers - How the Browser Responds
 Once we have declared what events the browswer should be listening for and tied them to certain elements in the DOM, we need to write functions for how the broswer should respond. In most of the examples above, we have included an anonymous function called a callback function, but it is much better practice to use a named function.
 
-#### Callback Functions 
+### Callback Functions 
 
 An anonymous function in an event handler with  `function(){}` as the parameter. It's anonymous because we create it without giving it a name. As you've seen, the code for the function will go in between the curly brackets. This is a common pattern, called a callback function.
 
@@ -135,7 +138,7 @@ $("h1").click(function(){
 
 Using callback functions creates unstructured code that is difficult do debug and lacks any ability for abstraction. Abstraction is  programming jargon for chunkability. Remember, the reason we create functions in the first place is so we can resuse them - which we can't do with anonymous functions.  
 
-#### Named Function as Event Handlers
+### Named Function as Event Handlers
 A better alternative to callback functions is simply defining a function prior to using it in an event handler. Then that function can be passed as a parameter when we call the event:
 
 ```js
@@ -168,7 +171,7 @@ $(this).slideUp(2000);
 $(this).slideDown(2000);
 ```
 
-This works, but we're repeating the lookup for the HTML element with the ID of stuff multiple times. 
+This works, but we're repeating the lookup for the HTML element with the ID multiple times. 
 
 Instead we can do this:
 
