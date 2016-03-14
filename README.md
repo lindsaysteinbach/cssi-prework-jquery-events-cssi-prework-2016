@@ -8,7 +8,7 @@
 * Chaining Methods in Event Listeners
 
 
-## Intro
+## Why Event Listeners? 
 
 When you're procrastinating on Facebook, almost every action you take leads the page to respond in some way.
 For example, as soon as your cursor moves in to the 'new post' text box, the cursor changes from an arrow to an 'I'. As soon as you click into the new post text box, a variety of new buttons appear - allowing you to attatch a picture of your lunch or a link to a politically charged article you only read halfway.  Recenlty, even just hovering over a video in your newsfeed will cause it to play automatically. These actions can happen because Javascript code is "listening" to an event taken by a user, and responding with an action.
@@ -20,13 +20,13 @@ In JavaScript, events are user actions such as mouse clicks, key presses, or win
 
 With event handlers, the browser listens for an event on a certain element or set of elements. After that event is triggered, the broswer "handles it" or responds by executing a function. 
 
-In the example below, lets pretend we wanted to do something everytime the user clicked on a header.
+In the example below, lets pretend we wanted to do something every time the user clicked on a header.
 
 ```js
 $("h1").click(action);
 ```
 
-* `$("h1")` - the *listener* - which element to pay attention to. note this uses the selector syntax `$()` 
+* `$("h1")` - the *listener* - the element to pay attention to. note this uses the selector syntax `$()` 
 * `click` - the *event* we are responding to
 * `action` - the *handler* - what the response should be
 
@@ -54,7 +54,8 @@ Now that we understand the syntax, let's look at the two main components of even
 Facebook pages don't just randomly play videos or arbitrarily show pop-up windows listing the people who have liked your posts. These pages wait for a certain event from the user to trigger a response. In this section, we'll expose some of those common events that a browser might be waiting for. 
 
 ### Responding to the User's Mouse
-Mouse events include click, dblClick, mousemove, mouseover, and mouseout. The code below will show an alert when the user's mouse enters into the element with the id mousetrap and another alert when the mouse leaves.
+Mouse events include click, dblClick, mousemove, mouseover, and mouseout. The code below will show an alert when the mouse enters into the element with the id mousetrap and another alert when the mouse leaves.
+
 ```js
 $("#mousetrap").mouseover(function(){
         alert("Welcome");
