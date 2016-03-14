@@ -1,12 +1,11 @@
 # jQuery Event Listeners
 
 ## Objectives
-* Event Listener Syntax
-* Events
-* Event Handlers
-* Using 'this' as a Selector
-* Chaining Methods in Event Listeners
-
+* Understand the purpose and structure of jQuery Event Listeners
+* Use correct event listener syntax 
+* Use event handlers to modify the DOM given an event.
+* Use 'this' as a selector within the DOM.
+* Chain methods within event listeners
 
 ## Why Event Listeners? 
 
